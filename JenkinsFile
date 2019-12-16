@@ -20,4 +20,8 @@ node {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
+   stage('Deploy'){
+       git 'https://github.com/JaspreetRFSingh/JenkinsDemo.git'
+   }
+
 }

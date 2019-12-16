@@ -7,9 +7,6 @@ node {
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.
       mvnHome = tool 'M3'
-      steps {
-          echo 'Hello, I am in the first stage.'
-      }
    }
    stage('Build') {
       // Run the maven build
@@ -18,22 +15,13 @@ node {
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean install/)
       }
-      steps {
-          echo 'Hello! I am in build stage.'
-      }
    }
    stage('Results') {
       //junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
-      steps {
-          echo 'Hello, I am in Results, phase'
-      }
    }
    stage('Deploy'){
        git 'https://github.com/JaspreetRFSingh/JenkinsDemo.git'
-      steps {
-          echo 'Hello Jenkins!'
-      }
    }
 
 }
